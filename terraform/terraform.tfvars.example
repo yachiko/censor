@@ -1,0 +1,8 @@
+# Copy to terraform.tfvars, then add every existing repository before the
+# first plan. Omitted attributes use the defaults in variables.tf.
+repositories = {
+  # example = {
+  #   description = "Example private repository"
+  #   topics      = ["example"]
+  # }
+}

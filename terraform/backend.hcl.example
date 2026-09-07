@@ -1,0 +1,16 @@
+# Copy this file to backend.hcl and replace the endpoint placeholder.
+# Credentials are read from AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY.
+
+bucket = "yachiko-terraform-state"
+key    = "censor/terraform.tfstate"
+region = "auto"
+
+endpoints = {
+  s3 = "https://ACCOUNT_ID.r2.cloudflarestorage.com"
+}
+
+# R2 is S3-compatible but does not implement AWS account APIs.
+skip_credentials_validation = true
+skip_region_validation      = true
+skip_requesting_account_id  = true
+use_lockfile                = true

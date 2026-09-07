@@ -1,0 +1,29 @@
+name: Terraform
+
+on:
+  pull_request:
+  push:
+    branches: [master]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.15.9
+      - uses: terraform-linters/setup-tflint@v4
+      - run: terraform fmt -check -recursive
+        working-directory: terraform
+      - run: terraform init -backend=false
+        working-directory: terraform
+      - run: terraform validate
+        working-directory: terraform
+      - run: tflint --init
+        working-directory: terraform
+      - run: tflint --recursive
+        working-directory: terraform
