@@ -5,7 +5,8 @@ formats, initializes without a backend, validates, and lints. All plans and
 applies run locally.
 
 Terraform configuration is in `terraform/`; run the documented `make` targets
-from the repository root.
+from the repository root. See [local usage](docs/local-usage.md) for complete
+credential, backend, import, plan, and apply instructions.
 
 ## Prerequisites
 
@@ -19,9 +20,8 @@ from the repository root.
 
 1. Copy `terraform/backend.hcl.example` to `terraform/backend.hcl` and replace
    `ACCOUNT_ID` with the account ID in the S3-compatible R2 endpoint.
-2. Copy `terraform/terraform.tfvars.example` to `terraform/terraform.tfvars`
-   and list every
-   repository that will be imported. List repository names with:
+2. Confirm that every repository is listed in
+   `terraform/repositories.auto.tfvars`. List repository names with:
 
    ```sh
    gh repo list Yachiko --limit 100 --json name --jq '.[].name'
@@ -42,7 +42,7 @@ from the repository root.
    make plan
    ```
 
-5. Reconcile repository settings in `terraform/terraform.tfvars` until the
+5. Reconcile repository settings in `terraform/repositories.auto.tfvars` until the
    plan contains only the intended changes, then apply the reviewed plan:
 
    ```sh
