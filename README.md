@@ -56,6 +56,7 @@ the map cannot delete it accidentally.
 
 ```sh
 make fmt
+make validate
 make lint
 ```
 

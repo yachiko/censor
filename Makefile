@@ -1,4 +1,4 @@
-.PHONY: lint fmt init plan apply
+.PHONY: lint fmt init validate plan apply
 
 lint:
 	tflint --chdir=terraform --init
@@ -9,6 +9,9 @@ fmt:
 
 init:
 	terraform -chdir=terraform init -backend-config=backend.hcl
+
+validate:
+	terraform -chdir=terraform validate
 
 plan:
 	terraform -chdir=terraform plan -out=plan.out
