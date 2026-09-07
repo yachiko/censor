@@ -43,6 +43,14 @@ resource "github_repository_ruleset" "this" {
     }
   }
 
+  # The account owner is a repository administrator and can recover from a
+  # misconfigured ruleset without weakening rules for other contributors.
+  bypass_actors {
+    actor_id    = 5
+    actor_type  = "RepositoryRole"
+    bypass_mode = "always"
+  }
+
   rules {
     deletion                = each.value.prevent_deletion
     non_fast_forward        = each.value.prevent_force_push

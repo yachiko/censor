@@ -58,7 +58,8 @@ make apply
 
 GitHub currently requires GitHub Pro to use repository rulesets on private
 repositories owned by this personal account. Public repositories accept optional
-default-branch rulesets through their `rulesets` map. For example:
+default-branch rulesets through their `rulesets` map. Public rulesets always
+allow repository administrators to bypass the ruleset. For example:
 
 ```hcl
 public_repositories = {

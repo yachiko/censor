@@ -46,6 +46,14 @@ public_repositories = {
     allow_auto_merge       = false
     allow_update_branch    = false
     delete_branch_on_merge = false
+    rulesets = {
+      protect-main = {
+        pull_request = {
+          required_approving_review_count = 1
+          require_code_owner_review       = true
+        }
+      }
+    }
   }
 
   clerk = {
@@ -57,6 +65,14 @@ public_repositories = {
     allow_auto_merge       = false
     allow_update_branch    = false
     delete_branch_on_merge = false
+    rulesets = {
+      protect-main = {
+        pull_request = {
+          required_approving_review_count = 1
+          require_code_owner_review       = true
+        }
+      }
+    }
   }
 
   homebrew-tap = {
@@ -68,5 +84,13 @@ public_repositories = {
     allow_auto_merge       = false
     allow_update_branch    = false
     delete_branch_on_merge = false
+    rulesets = {
+      protect-main = {
+        pull_request = {
+          required_approving_review_count = 1
+          require_code_owner_review       = true
+        }
+      }
+    }
   }
 }
