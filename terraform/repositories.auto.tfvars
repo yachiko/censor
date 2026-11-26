@@ -2,6 +2,7 @@
 # These values mirror the current GitHub repository settings.
 private_repositories = {
   remora = {
+    description            = "Self-hosted GitHub App for natural-language issue and PR reminders"
     has_projects           = true
     has_wiki               = false
     allow_merge_commit     = true
@@ -13,6 +14,7 @@ private_repositories = {
   }
 
   opifex = {
+    description            = "Static portfolio website built with Astro, Tailwind and React"
     has_projects           = true
     has_wiki               = false
     allow_merge_commit     = true
@@ -24,6 +26,7 @@ private_repositories = {
   }
 
   arbiter = {
+    description            = "Local-first, keyboard-first GitHub pull request review workspace"
     has_projects           = true
     has_wiki               = false
     allow_merge_commit     = true
@@ -35,6 +38,7 @@ private_repositories = {
   }
 
   experiment = {
+    description            = "Sandbox for throwaway prototypes"
     has_projects           = true
     has_wiki               = false
     allow_merge_commit     = true
@@ -46,6 +50,7 @@ private_repositories = {
   }
 
   tabellarius = {
+    description            = "Trading strategy research platform with AI-authored strategies and live alerts"
     has_projects           = true
     has_wiki               = false
     allow_merge_commit     = true
@@ -59,6 +64,7 @@ private_repositories = {
 
 public_repositories = {
   fossor = {
+    description            = "Multi-repository Git dashboard for the terminal"
     has_projects           = true
     has_wiki               = false
     allow_merge_commit     = true
@@ -105,6 +111,7 @@ public_repositories = {
   }
 
   clerk = {
+    description            = "CLI and k9s-style terminal UI for AWS Parameter Store secrets"
     has_projects           = true
     has_wiki               = true
     allow_merge_commit     = true
@@ -124,6 +131,7 @@ public_repositories = {
   }
 
   homebrew-tap = {
+    description            = "Homebrew tap for yachiko's command-line and desktop tools"
     has_projects           = true
     has_wiki               = true
     allow_merge_commit     = true
@@ -145,6 +153,7 @@ public_repositories = {
   }
 
   circitor = {
+    description            = "Local daemon that watches GitHub pull requests for coding agents"
     has_projects           = true
     has_wiki               = false
     allow_merge_commit     = true
@@ -159,6 +168,7 @@ public_repositories = {
   }
 
   lege = {
+    description            = "A minimal Markdown viewer"
     has_projects           = true
     has_wiki               = true
     allow_merge_commit     = true
