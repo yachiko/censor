@@ -1,5 +1,7 @@
 # censor
 
+*censor* (Latin): the Roman magistrate who kept the census, the register of every citizen and his property, and watched over their conduct.
+
 Terraform configuration for every public and private repository owned by
 `yachiko`, including default-branch rulesets on public repositories. CI only
 formats, initializes without a backend, validates, and lints. All plans and
