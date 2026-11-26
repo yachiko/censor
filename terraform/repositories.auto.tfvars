@@ -75,7 +75,6 @@ public_repositories = {
     delete_branch_on_merge = false
     rulesets = {
       primary = {
-        enforcement = "disabled"
         pull_request = {
           required_approving_review_count = 1
           require_code_owner_review       = true
