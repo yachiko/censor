@@ -14,3 +14,9 @@ module "repository_public" {
   repository = each.value
   rulesets   = each.value.rulesets
 }
+
+# Temporary: adopts the existing censor repository. Remove after it is applied.
+import {
+  to = module.repository_public["censor"].github_repository.this
+  id = "censor"
+}
