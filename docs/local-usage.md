@@ -16,7 +16,7 @@ export GITHUB_TOKEN="$(gh auth token)"
 
 `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` are the R2 S3 API credentials.
 They are the Cloudflare credentials used by Terraform's S3 backend. `GITHUB_TOKEN`
-must be able to administer every managed private repository.
+must be able to administer every managed repository.
 
 ## Backend
 

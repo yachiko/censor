@@ -1,6 +1,7 @@
 # censor
 
-Terraform configuration for private repositories owned by `Yachiko`. CI only
+Terraform configuration for every public and private repository owned by
+`yachiko`, including default-branch rulesets on public repositories. CI only
 formats, initializes without a backend, validates, and lints. All plans and
 applies run locally.
 
