@@ -180,4 +180,19 @@ public_repositories = {
       "Protect main" = {}
     }
   }
+
+  censor = {
+    description            = "Terraform management of the yachiko GitHub account"
+    has_projects           = true
+    has_wiki               = true
+    allow_merge_commit     = true
+    allow_rebase_merge     = true
+    allow_squash_merge     = true
+    allow_auto_merge       = false
+    allow_update_branch    = false
+    delete_branch_on_merge = false
+    rulesets = {
+      "Protect main" = {}
+    }
+  }
 }
