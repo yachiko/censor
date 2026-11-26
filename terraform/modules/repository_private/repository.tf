@@ -27,3 +27,10 @@ resource "github_repository" "this" {
     prevent_destroy = true
   }
 }
+
+resource "github_issue_label" "dependencies" {
+  repository  = github_repository.this.name
+  name        = "dependencies"
+  color       = "0366d6"
+  description = "Pull requests that update a dependency file"
+}

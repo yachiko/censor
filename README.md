@@ -6,7 +6,7 @@ applies run locally.
 
 Terraform configuration is in `terraform/`; run the documented `make` targets
 from the repository root. See [local usage](docs/local-usage.md) for complete
-credential, backend, import, plan, and apply instructions.
+credential, backend, plan, and apply instructions.
 
 ## Prerequisites
 
@@ -18,8 +18,9 @@ credential, backend, import, plan, and apply instructions.
 
 ## First-time setup
 
-1. Copy `terraform/backend.hcl.example` to `terraform/backend.hcl` and replace
-   `ACCOUNT_ID` with the account ID in the S3-compatible R2 endpoint.
+1. Create `terraform/backend.hcl` as described in
+   [local usage](docs/local-usage.md#backend), replacing `ACCOUNT_ID` with the
+   account ID in the S3-compatible R2 endpoint.
 2. Confirm that every repository is listed in
    `terraform/repositories.auto.tfvars`. List repository names with:
 
@@ -35,7 +36,7 @@ credential, backend, import, plan, and apply instructions.
    export GITHUB_TOKEN='...'
    ```
 
-4. Initialize and review the import plan:
+4. Initialize and review the plan:
 
    ```sh
    make init
