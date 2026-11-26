@@ -16,14 +16,27 @@ export GITHUB_TOKEN="$(gh auth token)"
 
 `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` are the R2 S3 API credentials.
 They are the Cloudflare credentials used by Terraform's S3 backend. `GITHUB_TOKEN`
-must be able to administer every managed private repository.
+must be able to administer every managed repository.
 
 ## Backend
 
-Create a local backend configuration from the committed template:
+Create `terraform/backend.hcl` with the following contents:
 
-```sh
-cp terraform/backend.hcl.example terraform/backend.hcl
+```hcl
+# Credentials are read from AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY.
+bucket = "yachiko-terraform-state"
+key    = "censor/terraform.tfstate"
+region = "auto"
+
+endpoints = {
+  s3 = "https://ACCOUNT_ID.r2.cloudflarestorage.com"
+}
+
+# R2 is S3-compatible but does not implement AWS account APIs.
+skip_credentials_validation = true
+skip_region_validation      = true
+skip_requesting_account_id  = true
+use_lockfile                = true
 ```
 
 Replace `ACCOUNT_ID` with the account identifier from the R2 S3-compatible
@@ -38,9 +51,11 @@ make init
 ## Repository Inventory
 
 `terraform/repositories.auto.tfvars` is versioned configuration, not a secret.
-It separates public and private repository maps. Add a repository to the
-appropriate map before its first plan; the import block will then import
-`yachiko/REPOSITORY` into state.
+It separates public and private repository maps. Every repository in those
+maps is already in state, so a new entry plans a new repository. To adopt a
+repository that already exists on GitHub, add a temporary `import` block for it
+(and for any existing ruleset or `dependencies` label), apply the reviewed plan,
+then remove the block.
 
 ## Plan And Apply
 

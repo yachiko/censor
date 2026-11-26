@@ -36,6 +36,9 @@ variable "rulesets" {
     enforcement            = string
     include                = set(string)
     exclude                = set(string)
+    bypass_app_ids         = set(number)
+    prevent_creation       = bool
+    prevent_update         = bool
     prevent_deletion       = bool
     prevent_force_push     = bool
     require_linear_history = bool
@@ -46,6 +49,7 @@ variable "rulesets" {
       require_code_owner_review         = bool
       require_last_push_approval        = bool
       required_review_thread_resolution = bool
+      allowed_merge_methods             = list(string)
     }))
   }))
 

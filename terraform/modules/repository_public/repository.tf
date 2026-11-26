@@ -28,6 +28,13 @@ resource "github_repository" "this" {
   }
 }
 
+resource "github_issue_label" "dependencies" {
+  repository  = github_repository.this.name
+  name        = "dependencies"
+  color       = "0366d6"
+  description = "Pull requests that update a dependency file"
+}
+
 resource "github_repository_ruleset" "this" {
   for_each = var.rulesets
 
@@ -51,7 +58,21 @@ resource "github_repository_ruleset" "this" {
     bypass_mode = "always"
   }
 
+  # GitHub Apps that publish directly to the default branch, such as release
+  # bots, bypass the ruleset by App ID.
+  dynamic "bypass_actors" {
+    for_each = each.value.bypass_app_ids
+
+    content {
+      actor_id    = bypass_actors.value
+      actor_type  = "Integration"
+      bypass_mode = "always"
+    }
+  }
+
   rules {
+    creation                = each.value.prevent_creation
+    update                  = each.value.prevent_update
     deletion                = each.value.prevent_deletion
     non_fast_forward        = each.value.prevent_force_push
     required_linear_history = each.value.require_linear_history
@@ -66,6 +87,7 @@ resource "github_repository_ruleset" "this" {
         require_code_owner_review         = pull_request.value.require_code_owner_review
         require_last_push_approval        = pull_request.value.require_last_push_approval
         required_review_thread_resolution = pull_request.value.required_review_thread_resolution
+        allowed_merge_methods             = pull_request.value.allowed_merge_methods
       }
     }
   }
